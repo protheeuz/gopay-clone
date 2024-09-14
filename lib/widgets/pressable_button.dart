@@ -57,7 +57,7 @@ class _PressableButtonState extends State<PressableButton> {
               borderRadius: BorderRadius.circular(30),
             ),
           ),
-          onPressed: null, // Handle pressed in GestureDetector
+          onPressed: null,
           child: Ink(
             decoration: BoxDecoration(
               gradient: widget.gradient,
