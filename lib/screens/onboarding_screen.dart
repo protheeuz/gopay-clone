@@ -5,10 +5,10 @@ class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});
 
   @override
-  _OnBoardingScreenState createState() => _OnBoardingScreenState();
+  OnBoardingScreenState createState() => OnBoardingScreenState();
 }
 
-class _OnBoardingScreenState extends State<OnBoardingScreen> {
+class OnBoardingScreenState extends State<OnBoardingScreen> {
   @override
   void initState() {
     super.initState();
@@ -70,7 +70,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       fontSize: 85,
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
-                      height: 0.9,
+                      height: 0.8,
                     ),
                   ),
                 ],

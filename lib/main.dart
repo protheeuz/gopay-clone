@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart'; // Tambahkan untuk menyimpan tema
+import 'package:shared_preferences/shared_preferences.dart';
 import 'routes/app_routes.dart';
 
 void main() {
@@ -10,10 +10,10 @@ class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
-  _MyAppState createState() => _MyAppState();
+  MyAppState createState() => MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+class MyAppState extends State<MyApp> {
   ThemeMode _themeMode = ThemeMode.system;
 
   @override
@@ -36,7 +36,7 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
-  Future<void> _updateThemeMode(ThemeMode themeMode) async {
+  Future<void> updateThemeMode(ThemeMode themeMode) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       _themeMode = themeMode;

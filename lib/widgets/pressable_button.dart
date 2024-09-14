@@ -17,10 +17,10 @@ class PressableButton extends StatefulWidget {
   });
 
   @override
-  _PressableButtonState createState() => _PressableButtonState();
+  PressableButtonState createState() => PressableButtonState();
 }
 
-class _PressableButtonState extends State<PressableButton> {
+class PressableButtonState extends State<PressableButton> {
   bool _isPressed = false;
 
   @override
