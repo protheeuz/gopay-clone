@@ -8,11 +8,13 @@ class AppRoutes {
   static const String onboarding = '/onboarding';
   static const String mode = '/mode';
 
-  static Map<String, WidgetBuilder> getRoutes() {
+  static Map<String, WidgetBuilder> getRoutes({required Function(ThemeMode) onThemeChanged}) {
     return {
       splash: (context) => const SplashSreen(),
       onboarding: (context) => const OnBoardingScreen(),
-      mode: (context) => const ChooseMode()
+      mode: (context) => ChooseMode(
+        onThemeChanged: onThemeChanged,
+      ),
     };
   }
 }

@@ -14,12 +14,12 @@ class MyApp extends StatefulWidget {
 }
 
 class MyAppState extends State<MyApp> {
-  ThemeMode _themeMode = ThemeMode.system;
+  ThemeMode _themeMode = ThemeMode.system; // Default menggunakan sistem
 
   @override
   void initState() {
     super.initState();
-    _loadThemeMode();
+    _loadThemeMode(); // Load dari SharedPreferences
   }
 
   Future<void> _loadThemeMode() async {
@@ -36,13 +36,19 @@ class MyAppState extends State<MyApp> {
     });
   }
 
-  Future<void> updateThemeMode(ThemeMode themeMode) async {
+  Future<void> _updateThemeMode(ThemeMode themeMode) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       _themeMode = themeMode;
     });
     await prefs.setString(
-        'theme_mode', themeMode == ThemeMode.light ? 'light' : 'dark');
+      'theme_mode',
+      themeMode == ThemeMode.light
+          ? 'light'
+          : themeMode == ThemeMode.dark
+              ? 'dark'
+              : 'system',
+    );
   }
 
   @override
@@ -56,9 +62,11 @@ class MyAppState extends State<MyApp> {
         textTheme: Theme.of(context).textTheme.apply(fontFamily: 'Yrsa'),
       ),
       darkTheme: ThemeData.dark(),
-      themeMode: _themeMode,
+      themeMode: _themeMode, // ThemeMode diambil dari state
       initialRoute: AppRoutes.splash,
-      routes: AppRoutes.getRoutes(),
+      routes: AppRoutes.getRoutes(
+        onThemeChanged: _updateThemeMode, // Pass function to change theme
+      ),
     );
   }
 }
